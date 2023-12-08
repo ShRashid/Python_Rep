@@ -104,14 +104,144 @@ t = tuple(sp)
 # 1, 2, 3, 5, 8, 13, 21] [Негафибоначчи]
 
 
-def fibs(num):
-    nums_pos = [0, 1]
-    nums_neg = [0, 1]
-    for i in range(num - 1):
-        nums_pos.append(nums_pos[i] + nums_pos[i + 1])
-        nums_neg.append(nums_neg[i] - nums_neg[i + 1])
-    return (nums_neg[:1:-1] + nums_pos)
+# def fibs(num):
+#     nums_pos = [0, 1]
+#     nums_neg = [0, 1]
+#     for i in range(num - 1):
+#         nums_pos.append(nums_pos[i] + nums_pos[i + 1])
+#         nums_neg.append(nums_neg[i] - nums_neg[i + 1])
+#     return (nums_neg[:1:-1] + nums_pos)
 
-print(fibs(8))
+# print(fibs(8))
 
+
+# Использование обхода ошибок
+
+# # def print_sp(sp: list):
+#     if not isinstance(sp, list):
+#         print("Нужен именно список!")
+#         return
+#         # raise ValueError("Нужен именно список!")
+#     for i,v in enumerate(sp):
+#         print(f"{i=} - {v=}")
+
+
+
+# sp = [5, 8, 9, True, 'Hello']
+# s = "Hello"
+# print_sp(s)
+
+# Обход ошибок
+# try:
+#     print_sp(sp)
+#     print_sp(s)
+# except ValueError as e:
+#     print(e)
+
+
+# Задача №25. Решение в группах
+# Напишите программу, которая принимает на вход
+# строку, и отслеживает, сколько раз каждый символ
+# уже встречался. Количество повторов добавляется к
+# символам с помощью постфикса формата _n.
+# Input: a a a b c a a d c d d
+# Output: a a_1 a_2 b c a_3 a_4 d c_1 d_1 d_2
+# Для решения данной задачи используйте функцию
+# .split()
+
+# input_string = input("Input: ")
+# input_string = "a a a b c a a d c d d"
+# chars = input_string.split()
+
+# char_count = {}
+# for char in chars:
+#     if char in char_count:
+#         char_count[char] += 1
+#         print(char + "_" + str(char_count[char]), end=" ")
+#     else:
+#         char_count[char] = 1
+#         print(char, end=" ")
+
+# b = 'a a a b c a a d c d d'
+# a = ''
+# b = b.split(' ')
+# for i in b:
+#     count_1 = a.count(i)
+#     if count_1 == 0:
+#         a += i+' '
+#     else:
+#         a += i+'_'+str(count_1)+' '
+# print(a.strip())
+
+# Задача №27. Решение в группах
+# Пользователь вводит текст(строка). Словом считается
+# последовательность непробельных символов идущих
+# подряд, слова разделены одним или большим числом
+# пробелов. Определите, сколько различных слов
+# содержится в этом тексте.
+# Input: She sells sea shells on the sea shore The shells
+# that she sells are sea shells I'm sure.So if she sells sea
+# shells on the sea shore I'm sure that the shells are sea
+# shore shells
+# Output: 13
+
+# string = ("She sells sea shells on the sea shore The shells"
+#           " that she sells are sea shells I'm sure.So if"
+#           " she sells sea shells on the sea shore I'm sure"
+#           " that the shells are sea shore shells")
+# print(len(set(string.replace(".", " ").lower().split())))
+
+# задача 1 необязательная.
+# Пользователь вводит натуральное k. Надо сформировать многочлен такой степени, 
+# где все коэффициенты случайные от -10 до 10.
+# ​
+# например, k=2 -> -x^2 + 3*x - 8 = 0
+# тут коэффициенты -1,3,-8
+# например, k=3 -> 3*x^3 - 2*x = 0
+# тут коэффициенты 3,0,-2,0
+
+# import random
+# k = int(input("Введите степень многочлена: "))
+# res = ""
+# coefficients = [random.randint(-10, 10) for _ in range(k+1)]
+# mmm = ' + '.join([f'{coefficients[i]}x^{i}' for i in range(k + 1)])
+
+# print(f"многочлен степени {k} от -10 до 10: {mmm}")
+
+# pr = '22*4+3'
+# sp=[]
+# res = ""
+# for symb in pr:
+#     if not (res + symb).isdigit():
+#         sp.append(res)
+#         res = ""
+#         sp.append(symb)
+#     else:
+#         res += symb
+# sp.append(res)
+    
+# print(sp) # ['22','*','4','+','3']
+
+from random import randint
+
+
+def create_list(lower, upper, count):
+    res = []
+    for _ in range(count):
+        res.append(randint(lower, upper))
+    return res
+
+
+
+# print(create_list(-5,10,5))
+# print( sp := [randint(-5, 10)  for _ in range (5) ] )
+sp = [i for i in range(10)]
+print(sp)
+
+print([i**2 for i in sp])
+print([i**2  for i in sp if i%2 ])
+print([i**2 if i%2 else 0 for i in sp ])
+print(sum([i**2 if i%2 else 0 for i in sp ]))
+
+print({i: chr(i) for i in range (5) })
 
